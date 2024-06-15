@@ -42,7 +42,7 @@ function LoginPage() {
         */
 
         //Create session
-        login(username, data.tp, data.np)
+        login(username, data.tp, data.nm)
 
         //Redirect user
         if (data.rdLoc === 1){

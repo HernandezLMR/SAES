@@ -41,8 +41,8 @@ export default async function Calificacion(){
                 <tbody>
                     {calificaciones.map((calificacion, index) => (
                         <tr key={index}>
-                            <td>{calificacion.grupo}</td>
-                            <td>{calificacion.materia}</td>
+                            <td>{calificacion.grupoID}</td>
+                            <td>{calificacion.materiaNombre}</td>
                             <td>{calificacion.parcial1}</td>
                             <td>{calificacion.parcial2}</td>
                             <td>{calificacion.parcial3}</td>

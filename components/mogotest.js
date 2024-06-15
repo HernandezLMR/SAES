@@ -18,10 +18,10 @@ async function main() {
         await client.connect();
 
         // Specify the database name (it will be created lazily)
-        const database = client.db("SAES");
+        const database = await client.db("SAES");
 
         // Optionally, you can create a collection in the new database to ensure it's created
-        const collection = database.collection("Calificaciones");
+        //const collection = database.collection("Materias");
 
         //const hash = await bcrypt.hash("adminpassword456", 10);
         
@@ -40,8 +40,21 @@ async function main() {
         adminpassword456
         
         */
+       
+        const userDB = await database.collection("Calificaciones");
+        const materiasDB = await database.collection("Materias");
+        const matricula = "2022710195";
+
+        
+        const calificacionesResult = await userDB.find({ "estudianteID": matricula, "completed": true }).toArray();
+        await calificacionesResult.forEach(doc => {
+          console.log(doc);
+        });
+        const materiasIDs = calificacionesResult.map(calificacion => calificacion.materiaNombre);
+
         // Insert a document into the collection
-        const result = await collection.find({ "estudianteID" : "2022710195", "completed" : false });
+        const result = await materiasDB.find({ "nombre": { $in: materiasIDs } }).toArray();
+        
         await result.forEach(doc => {
           console.log(doc);
         });

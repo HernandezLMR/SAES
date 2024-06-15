@@ -2,12 +2,11 @@
 
 import React, { useState } from 'react';
 
-const UserForm = () => {
+const MateriasForm = () => {
   const [formData, setFormData] = useState({
-    matricula: '',
+    id: '',
     nombre: '',
-    contrasena: '',
-    tipoUsuario: ''
+    semestre: ''
   });
 
   const handleChange = (e) => {
@@ -22,13 +21,12 @@ const UserForm = () => {
     e.preventDefault();
     
     const data = {
-        matricula: formData.matricula,
+        id: formData.id,
         nombre: formData.nombre,
-        password: formData.contrasena,
-        tipo: formData.tipoUsuario
+        semestre: formData.semestre
     }
     try{
-      const response = await fetch('/api/create_user', {
+      const response = await fetch('/api/create_materia', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -38,10 +36,9 @@ const UserForm = () => {
       const dataResponse = await response.json();
       console.log(dataResponse);
       setFormData({
-        matricula: '',
+        id: '',
         nombre: '',
-        contrasena: '',
-        tipoUsuario: ''
+        semestre: ''
       })
       if (response.ok){
         alert(dataResponse.message);
@@ -57,12 +54,12 @@ const UserForm = () => {
   return (
     <form onSubmit={handleSubmit}>
       <div>
-        <label htmlFor="matricula">Matricula:</label>
+        <label htmlFor="id">ID:</label>
         <input
           type="text"
-          id="matricula"
-          name="matricula"
-          value={formData.matricula}
+          id="id"
+          name="id"
+          value={formData.id}
           onChange={handleChange}
           required
         />
@@ -79,34 +76,19 @@ const UserForm = () => {
         />
       </div>
       <div>
-        <label htmlFor="contrasena">Contraseña:</label>
+        <label htmlFor="semestre">Semestre:</label>
         <input
-          type="password"
-          id="contrasena"
-          name="contrasena"
-          value={formData.contrasena}
+          type="text"
+          id="semestre"
+          name="semestre"
+          value={formData.semestre}
           onChange={handleChange}
           required
         />
       </div>
-      <div>
-        <label htmlFor="tipoUsuario">Tipo de usuario:</label>
-        <select
-          id="tipoUsuario"
-          name="tipoUsuario"
-          value={formData.tipoUsuario}
-          onChange={handleChange}
-          required
-        >
-          <option value="">Seleccione</option>
-          <option value="admin">Admin</option>
-          <option value="estudiante">Estudiante</option>
-          <option value="maestro">Maestro</option>
-        </select>
-      </div>
-      <button type="submit">Crear Usuario</button>
+      <button type="submit">Crear Materia</button>
     </form>
   );
 };
 
-export default UserForm;
+export default MateriasForm;
