@@ -21,7 +21,7 @@ async function main() {
         const database = await client.db("SAES");
 
         // Optionally, you can create a collection in the new database to ensure it's created
-        //const collection = database.collection("Materias");
+        const collection = database.collection("Grupos");
 
         //const hash = await bcrypt.hash("adminpassword456", 10);
         
@@ -41,24 +41,16 @@ async function main() {
         
         */
        
-        const userDB = await database.collection("Calificaciones");
-        const materiasDB = await database.collection("Materias");
-        const matricula = "2022710195";
 
         
-        const calificacionesResult = await userDB.find({ "estudianteID": matricula, "completed": true }).toArray();
-        await calificacionesResult.forEach(doc => {
-          console.log(doc);
-        });
-        const materiasIDs = calificacionesResult.map(calificacion => calificacion.materiaNombre);
-
+        
+        
         // Insert a document into the collection
-        const result = await materiasDB.find({ "nombre": { $in: materiasIDs } }).toArray();
+        const result = await collection.findOne({ materia: 'Probabilidad y Estadística' });
+        console.log(result);
+
         
-        await result.forEach(doc => {
-          console.log(doc);
-        });
-        
+       
 
     } finally {
         // Close the connection to the MongoDB cluster
