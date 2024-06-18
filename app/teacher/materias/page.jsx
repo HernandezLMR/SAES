@@ -1,4 +1,4 @@
-import materias from "../../../components/html/materias.jsx"
+import Materias from "../../../components/html/materias.jsx"
 import { getSession } from "../../../components/actions.ts"
 import { redirect } from "next/navigation"
 
@@ -8,5 +8,7 @@ export default async function Home() {
         redirect("/")
     }
 
-    return materias()
+    return (
+        <Materias/>
+    )
 }

@@ -46,8 +46,8 @@ async function main() {
         
         
         // Insert a document into the collection
-        const result = await collection.findOne({ materia: 'Probabilidad y Estadística' });
-        console.log(result);
+        const result = await collection.find({maestro : "1234567890"});
+        await result.forEach(doc => console.log(doc));
 
         
        

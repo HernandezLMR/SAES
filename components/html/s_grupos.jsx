@@ -1,7 +1,6 @@
 "use client"
 
 import React, { useState, useEffect } from 'react';
-import { getSession } from "../actions";
 import AddStudent from '../handleAddStudent';
 
 function GroupSearchAndAdd() {
@@ -60,10 +59,10 @@ function GroupSearchAndAdd() {
     }
   }, [groupData]);
 
-  function handleAddStudent() {
-    AddStudent(groupData);
+  async function handleAddStudent() {
+    const message = await AddStudent(groupData);
     
-    alert("Estudiante añadido");
+    alert(message.message);
   }
 
   return (

@@ -1,28 +1,36 @@
 "use server"
 import DB from "../../components/database"
 
+
 export default async function addUser(req,res){
     if (req.method !== 'POST'){
         return res.status(405).json({ message: 'Method not allowed' });
     }
+    
     const client = await DB();
     const connection = client.db('SAES');
     try{
         const userDB = await connection.collection("Grupos");
-        const GrupoID = req.body.id;
-        const EstudianteNombre = req.body.nombre;
-
-        const res1 = await userDB.findOne({ "id" : GrupoID });
-        const alumnos = res1.alumnos;
-        const existe = alumnos.includes(EstudianteNombre);
-
-        if(existe){
-            return res.status(400).json({ message: 'Student already exists' });
+        const data = req.body;
+        
+        
+        const cursor = await userDB.find(data);
+        const result = await cursor.toArray();
+        
+        for (let doc of result) {
+            delete doc._id;
+            delete doc.alumnos;
+            delete doc.maestro;
         }
         
-        const result = await userDB.updateOne({ "id" : GrupoID }, { $push: {alumnos: EstudianteNombre} });
+        console.log("Database returned:")
+        for (let doc of result) {
+            console.log(doc);
+        }
         
-        return res.status(201).json({ message: 'Student added' });
+        
+        
+        return res.status(201).json({ message: 'Group found' , groups: result});
         
     }
     catch(err){

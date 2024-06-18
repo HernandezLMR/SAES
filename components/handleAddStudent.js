@@ -22,7 +22,7 @@ export default async function AddStudent(groupData) {
         });
 
         const dataResponse = await response.json();
-        console.log(dataResponse);
+        return dataResponse;
         
       } catch (error) {
         console.log(error);

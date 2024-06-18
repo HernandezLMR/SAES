@@ -1,33 +1,42 @@
-import Link from "next/link"
+"use client"
 
-export default function materias(){
-    return (
-            <div>
-                <h1>
-                    Esta es la pagina de materias
-                </h1>
-                <p>
-                    Aqui podras encontrar las materias asignadas al usuario activo
-                </p>
-                <table class="table" border="1">
-                    <tbody>
-                        <tr>
-                            <th> Grupo </th>
-                            <th> Materia </th>
-                        </tr>
-                        <tr>
-                            {/*<Link href="/teacher/asignar_calificaciones">*/}
-                            
-                            <td> 1 </td>
-                            {/*</Link>*/}
-                            <td> Matematicas </td>
-                            
-                            
-                            
-                        </tr>
-                    </tbody>
-                </table>
+import React, { useState, useEffect } from 'react';
+import GetGroups from "../handleGetGroups";
+import { useHistory } from 'react-router-dom';
 
-            </div>
-    )
- }
+export default function Materias() {
+  const [grupos, setGrupos] = useState([]);
+
+  useEffect(() => {
+    const fetchGrupos = async () => {
+      let result = await GetGroups();
+      console.log("Final response to front end:"+result);
+      if (result) {
+        setGrupos(result);
+      } else {
+        console.log("No groups found or invalid response structure");
+      }
+    };
+
+    fetchGrupos();
+  }, []);
+
+  return (
+    <div>
+      <table className="table" border="1">
+        <tbody>
+          <tr>
+            <th>Grupo</th>
+            <th>Materia</th>
+          </tr>
+          {grupos.map((grupo, index) => (
+            <tr key={index}>
+              <td>{grupo.id}</td>
+              <td>{grupo.materia}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  );
+}
