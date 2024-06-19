@@ -23,10 +23,7 @@ export default async function addUser(req,res){
             delete doc.maestro;
         }
         
-        console.log("Database returned:")
-        for (let doc of result) {
-            console.log(doc);
-        }
+        
         
         
         

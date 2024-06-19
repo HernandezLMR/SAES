@@ -1,23 +1,26 @@
-import React from 'react';
-import { useLocation } from 'react-router-dom';
+// ../../../components/GetGroup.jsx
+"use client";
 
-function useQuery() {
-  return new URLSearchParams(useLocation().search);
-}
+import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
 
-export default function Calif() {
-  let query = useQuery();
-  let grupo = query.get("grupo");
+export default function GetGroup() {
+    const router = useRouter();
+    
+    const [grupoID, setGrupoID] = useState("");
 
-  useEffect(() => {
-    // Perform your operations with the "grupo" value here
-    console.log("Grupo value:", grupo);
-  }, [grupo]);
 
-  return (
-    <div>
-      <h1>Another Page</h1>
-      <p>Grupo: {grupo}</p>
-    </div>
-  );
+    useEffect(() => {
+        
+        console.log("ID: "+ router.grupoID);
+    }, [router.query]);
+    
+
+    if (!grupoID) {
+        return <div>Loading...</div>;
+    }
+
+    return (
+        <h1>{grupoID}</h1>
+    );
 }

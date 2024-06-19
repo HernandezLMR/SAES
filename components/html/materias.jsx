@@ -2,15 +2,16 @@
 
 import React, { useState, useEffect } from 'react';
 import GetGroups from "../handleGetGroups";
-import { useHistory } from 'react-router-dom';
+import { useRouter } from 'next/navigation';
 
 export default function Materias() {
   const [grupos, setGrupos] = useState([]);
+  const router = useRouter();
 
   useEffect(() => {
     const fetchGrupos = async () => {
       let result = await GetGroups();
-      console.log("Final response to front end:"+result);
+      
       if (result) {
         setGrupos(result);
       } else {
@@ -21,6 +22,10 @@ export default function Materias() {
     fetchGrupos();
   }, []);
 
+  function handleRowClick(grupoID){
+    router.push(`/teacher/asignar_calificaciones?grupoID=${grupoID}`)
+  }
+
   return (
     <div>
       <table className="table" border="1">
@@ -30,7 +35,7 @@ export default function Materias() {
             <th>Materia</th>
           </tr>
           {grupos.map((grupo, index) => (
-            <tr key={index}>
+            <tr key={index} onClick={() => handleRowClick(grupo.id)}>
               <td>{grupo.id}</td>
               <td>{grupo.materia}</td>
             </tr>
