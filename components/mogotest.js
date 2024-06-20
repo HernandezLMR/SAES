@@ -1,4 +1,4 @@
-const { MongoClient, ServerApiVersion } = require('mongodb');
+const { MongoClient, ServerApiVersion, ObjectId } = require('mongodb');
 const bcrypt = require('bcrypt');
 
 async function main() {
@@ -21,7 +21,7 @@ async function main() {
         const database = await client.db("SAES");
 
         // Optionally, you can create a collection in the new database to ensure it's created
-        const collection = database.collection("Grupos");
+        const collection = database.collection("Periodo");
 
         //const hash = await bcrypt.hash("adminpassword456", 10);
         
@@ -43,12 +43,19 @@ async function main() {
        
 
         
+        const data = { '1122334455': '7', '2022710195': '8' };
+        const groupID = "4IV1";
+
+        const keys = Object.keys(data);
+        const values = Object.values(data);
+
+        console.log(keys[0]);
         
         
         // Insert a document into the collection
-        const result = await collection.find({maestro : "1234567890"});
-        await result.forEach(doc => console.log(doc));
-
+        let result = await collection.findOne({"estudianteID" : keys[1], "grupoID" : groupID});
+        console.log(result);
+        
         
        
 

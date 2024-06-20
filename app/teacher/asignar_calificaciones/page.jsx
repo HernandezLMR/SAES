@@ -13,7 +13,17 @@ export default async function calif(){
     if (!session || session.tipo != "maestro"){
         redirect("/")
     }
-    
+
+    const response = await fetch("http://localhost:3000/api/webosxd", {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        }
+      });
+  
+    if (!response.active){
+        redirect("/teacher/home");
+    }
 
     
     

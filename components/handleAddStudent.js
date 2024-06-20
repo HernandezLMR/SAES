@@ -8,7 +8,9 @@ export default async function AddStudent(groupData) {
     if (groupData ) {
       const data = {
         nombre: session.nombre,
-        id: groupData.id
+        estudianteID: session.matricula,
+        id: groupData.id,
+        materia : groupData.materia
       };
       
       try {
