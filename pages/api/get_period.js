@@ -15,6 +15,7 @@ export default async function handler(req, res) {
             const objID = new ObjectId(data);
 
             const result = await periodDB.findOne({"_id" : objID});
+            console.log("Active status:"+result.active);
             res.status(200).json(result);    
         }
         catch(error){

@@ -9,7 +9,30 @@ export default async function Submit(req, res){
     const connection = client.db('SAES')
 
     try {
-        //MOst probably very wrong, but tired
+        console.log("Input: " + JSON.stringify(req.body.calif));
+        const matriculas = Object.keys(req.body.calif);
+        const calificaciones = Object.values(req.body.calif);
+        const gID = req.body.gID;
+        const periodo = req.body.periodo;
+        const parcial = "parcial" + periodo;
+        
+        
+        const materia = req.body.gNom;
+
+        const califDB = connection.collection('Calificaciones');
+
+        for (let i = 0; i < calificaciones.length; i++) {
+            
+            let update;
+            let updatestring = '{ "' + parcial + '" : "' + calificaciones[i] + '" }';
+            console.log(updatestring);
+            update = JSON.parse(updatestring);
+            
+            let result = await califDB.updateOne(
+                { estudianteID: matriculas[i], grupoID: gID, materiaNombre: materia },
+                { $set: update }
+            );
+        }
         
         
         res.status(200).json({message: 'OK'});

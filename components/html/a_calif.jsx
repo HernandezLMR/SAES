@@ -9,6 +9,8 @@ export default function GetGroup() {
     const [grupoID, setGrupoID] = useState("");
     const [students, setStudents] = useState([]);
     const [grades, setGrades] = useState({});
+    const [evalPeriod, setEvalPeriod] = useState("");
+    const [nombre, setNombre] = useState("");
 
     useEffect(() => {
         const grupoIDParam = searchParams.get("grupoID");
@@ -34,6 +36,31 @@ export default function GetGroup() {
         }
     }, [grupoID]);
 
+    useEffect(() => {
+        //Get evaluation period number
+        if (grupoID) {
+            const fetchEvalPeriod = async () => {
+                const result = await fetch("http://localhost:3000/api/get_period", {
+                    method: "GET",
+                    headers: {
+                      "Content-Type": "application/json",
+                    }
+                  });
+                const data = await result.json();
+                setEvalPeriod(data.period);
+            };
+            fetchEvalPeriod();
+        }
+    })
+
+    useEffect(() => {
+        const grupoMateria = searchParams.get("grupoM");
+        if (grupoMateria) {
+            setNombre(grupoMateria);
+            console.log("ID: " + grupoMateria);
+        }
+    }, [searchParams]);
+
     const handleGradeChange = (id, value) => {
         setGrades(prevGrades => ({
             ...prevGrades,
@@ -41,7 +68,8 @@ export default function GetGroup() {
         }));
     };
 
-    const handleSubmit = async () => {
+    const handleSubmit = async() => {
+
         // Send the grades to the database
         
          const response = await fetch('/api/submit_grades', {
@@ -49,7 +77,7 @@ export default function GetGroup() {
              headers: {
                  'Content-Type': 'application/json',
              },
-             body: JSON.stringify(grades),
+             body: JSON.stringify({calif : grades, gID: grupoID, periodo: evalPeriod, gNom: nombre}),
          });
         console.log("Grades submitted");
     };
@@ -60,10 +88,9 @@ export default function GetGroup() {
 
     return (
         <div>
-            <p>Grupo: 4IV1</p>
-            <p>Materia: Análisis y diseño de sistemas</p>
-            <p>Evaluación: Primer parcial</p>
-            <p>Fecha límite: 27/06/2024</p>
+            <p>Grupo: {grupoID}</p>
+            <p>Materia: {nombre}</p>
+            <p>Evaluación: {"Parcial "+evalPeriod}</p>
             <table className="table" border="1">
                 <thead>
                     <tr>

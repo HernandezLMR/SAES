@@ -22,8 +22,8 @@ export default function Materias() {
     fetchGrupos();
   }, []);
 
-  function handleRowClick(grupoID){
-    router.push(`/teacher/asignar_calificaciones?grupoID=${grupoID}`)
+  function handleRowClick(grupoID, grupoM){
+    router.push(`/teacher/asignar_calificaciones?grupoID=${grupoID}&grupoM=${grupoM}`)
   }
 
   return (
@@ -35,7 +35,7 @@ export default function Materias() {
             <th>Materia</th>
           </tr>
           {grupos.map((grupo, index) => (
-            <tr key={index} onClick={() => handleRowClick(grupo.id)}>
+            <tr key={index} onClick={() => handleRowClick(grupo.id,grupo.materia)}>
               <td>{grupo.id}</td>
               <td>{grupo.materia}</td>
             </tr>

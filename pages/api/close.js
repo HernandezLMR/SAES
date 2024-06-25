@@ -10,7 +10,7 @@ export default async function Submit(req, res){
 
     try {
         const califDB = connection.collection('Calificaciones');
-        const result = califDB.updateMany({"completed" : false}, {$set: { "completed" : true}});
+        const result = await califDB.updateMany({"completed" : false}, {$set: { "completed" : true}});
         
         res.status(200).json(ids);
     } catch (error) {

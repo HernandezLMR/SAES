@@ -14,14 +14,15 @@ export default async function calif(){
         redirect("/")
     }
 
-    const response = await fetch("http://localhost:3000/api/webosxd", {
+    const response = await fetch("http://localhost:3000/api/get_period", {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
         }
       });
-  
-    if (!response.active){
+    const data = await response.json();
+    console.log(data);
+    if (!data.active){
         redirect("/teacher/home");
     }
 
