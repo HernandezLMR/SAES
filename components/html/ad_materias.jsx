@@ -1,6 +1,7 @@
 "use client"
 
 import React, { useState } from 'react';
+import styles from "../grupos_styles2.module.css"
 
 const MateriasForm = () => {
   const [formData, setFormData] = useState({
@@ -52,7 +53,7 @@ const MateriasForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form className={styles.submit} onSubmit={handleSubmit}>
       <div>
         <label htmlFor="id">ID:</label>
         <input

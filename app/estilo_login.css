@@ -1,0 +1,186 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #fff;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #80004b; 
+    color: white;
+    padding: 10px;
+    width: 100%;
+}
+
+.navbar {
+    display: flex;
+    align-items: center; /* Centra verticalmente los elementos */
+    width: 100%;
+    justify-content: space-between; /* Espacia los elementos entre sí */
+}
+
+.logo {
+    width: 200px;
+    margin-right: 20px; /* Espacio entre el logo y el texto */
+}
+
+.header-left {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Alinea el contenido a la izquierda */
+    margin-right: auto;
+}
+
+.header-left h1, .header-left p {
+    margin: 0;
+    padding: 0;
+}
+
+.tagline {
+    text-align: center; /* Centra el texto horizontalmente */
+    width: 100%; /* Asegura que ocupe todo el ancho disponible */
+    margin-top: 10px;
+}
+
+.header-right {
+    text-align: right; /* Alinea el texto a la derecha */
+    margin-left: auto;
+    margin-right: 90px;
+}
+
+.header-right h2 {
+    margin: 0;
+    padding: 0;
+}
+
+.content-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    margin-top: 50px;
+}
+
+.carousel {
+    width: 60%;
+    margin-right: 20px;
+    transition: transform 1 ase-in-out;
+    -webkit-transition: transform 1 ase-in-out;
+    -moz-transition: transform 1 ase-in-out;
+    -ms-transition: transform 1 ase-in-out;
+    -o-transition: transform 1 ase-in-out;
+}
+
+.carousel-inner img {
+    width: 100%;
+    /*Aseguraquelaimagenocupeelanchocompletodelcarrusel*/height: 300px;
+    /*Ajustalaalturadelasimágenesdelcarrusel*/object-fit: cover;
+    /*Ajustalaimagenparaqueocupeelcontenedorsindistorsión*/border-radius: 15px;
+    -webkit-border-radius:15px;
+    -moz-border-radius:15px;
+    -ms-border-radius:15px;
+    -o-border-radius:15px;
+}
+
+.carousel-caption {
+    background-color: rgba(0, 0, 0, 0.5); /* Fondo semitransparente para el texto */
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.login-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    margin-left: 50px; /* Ajusta la separación del contenedor de login */
+}
+
+.login-container h2 {
+    width: 100%; /* Hace que el mensaje ocupe el ancho completo del contenedor para centrarse */
+    text-align: center; /* Asegura que el texto esté centrado dentro de su contenedor */
+    margin-bottom: 20px; /* Espacio entre el mensaje de bienvenida y el formulario */
+}
+
+form {
+    border: 0px solid #ccc;
+    padding: 20px;
+    width: 300px; /* Puedes ajustar el ancho según tus necesidades */
+}
+
+form label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+form input[type="text"],
+form input[type="password"] {
+    border-radius: 32px;
+    background: #f5f0d1;
+    box-shadow: inset -17px -17px 10px #dfdabe,
+                inset 17px 17px 10px #ffffe4;
+    width: calc(100% - 10px);
+    padding: 5px;
+    margin-bottom: 20px;
+}
+
+button {
+    text-align: center;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 30px;
+    left: 39.34%;
+    color: white;
+    border-radius: 90px;
+    background: #6d0137;
+    box-shadow: inset -14px -14px 28px #8b0046, inset 14px 14px 28px #b5005a;
+    -webkit-border-radius: 90px;
+    -moz-border-radius: 90px;
+    -ms-border-radius: 90px;
+    -o-border-radius: 90px;
+}
+
+
+button:hover {
+    background-color: #a00050; /* Un tono más claro para el efecto hover */
+}
+
+/* Media Queries para hacer la página responsiva */
+@media (max-width: 768px) {
+    .header-container {
+        flex-direction: column; /* Cambia a columna en pantallas pequeñas */
+        align-items: center;
+        text-align: center;
+    }
+
+    .header-left, .header-right {
+        margin: 10px 0;
+    }
+
+    .header-right {
+        text-align: center;
+    }
+
+    .content-container {
+        flex-direction: column; /* Cambia a columna en pantallas pequeñas */
+    }
+
+    .carousel {
+        width: 100%; /* Asegura que el carrusel ocupe el ancho completo */
+        margin-right: 0; /* Elimina el margen derecho */
+        margin-bottom: 20px; /* Añade margen inferior para separación */
+    }
+
+    .login-container {
+        width: 100%; /* Asegura que el formulario ocupe el ancho completo */
+        padding: 10px;
+    }
+
+    form {
+        width: 90%; /* Asegura que el formulario ocupe el 90% del ancho del contenedor */
+    }
+}

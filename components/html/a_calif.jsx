@@ -96,7 +96,7 @@ export default function GetGroup() {
                     <tr>
                         <th>Matricula</th>
                         <th>Nombre</th>
-                        <th>Calificación guardada</th>
+                        
                         <th>Calificación</th>
                     </tr>
                 </thead>
@@ -105,7 +105,7 @@ export default function GetGroup() {
                         <tr key={student.id}>
                             <td>{student.id}</td>
                             <td>{student.name}</td>
-                            <td>{student.savedGrade ?? 'N/A'}</td>
+                            
                             <td>
                                 <select
                                     id={`calificaciones-${student.id}`}
@@ -121,7 +121,7 @@ export default function GetGroup() {
                     ))}
                 </tbody>
             </table>
-            <button onClick={handleSubmit}>Submit Grades</button>
+            <button onClick={handleSubmit}>Subir calificaciones</button>
         </div>
     );
 }

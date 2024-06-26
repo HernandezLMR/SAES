@@ -1,0 +1,16 @@
+.buttons {
+    display: flex;
+    justify-content: space-around; /* Adjust as needed: space-around, space-between, etc. */
+    align-items: center;
+}
+
+.buttons button {
+    padding: 10px 20px; /* Adjust padding as needed for button size */
+    margin: 5px; /* Optional: Adjust margin between buttons */
+    font-size: 1rem; /* Adjust font size as needed */
+    min-width: 200px; /* Set a minimum width for buttons */
+    text-align: center;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px; /* Optional: Rounded corners */
+}

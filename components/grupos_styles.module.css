@@ -1,0 +1,19 @@
+.submit{
+    display: flex;
+    justify-content: space-around; /* Adjust as needed: space-around, space-between, etc. */
+    align-items: center;
+    margin-left: 500px;
+}
+
+.submit button{
+    min-width: 200px;
+}
+
+.submit button:hover{
+    background: #6d0137;
+    box-shadow: inset -14px -14px 28px #8b0046, inset 14px 14px 28px #e60374;
+}
+
+.submit input{
+    min-width: 500px;
+}

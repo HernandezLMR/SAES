@@ -58,10 +58,10 @@ export default async function Kardex() {
     return (
         <div>
             <p>
-                Boleta: 2022710195
+                Boleta: {session.matricula}
             </p>
             <p>
-                Nombre: Aldo Yael Hernandez Flores
+                Nombre: {session.nombre}
             </p>
             <p>
                 Promedio: {promedio}

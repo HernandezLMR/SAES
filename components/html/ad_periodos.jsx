@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import styles from "../grupos_styles2.module.css"
 
 export default function SetPeriods() {
   const [active, setActive] = useState(false);
@@ -90,7 +91,7 @@ export default function SetPeriods() {
   return (
     <div>
       {!active ? (
-        <div>
+        <div className={styles.submit}>
           <span>Periodos:</span>
           <select
             value={selectedPeriod}
@@ -103,7 +104,7 @@ export default function SetPeriods() {
           <button onClick={handleStartPeriod}>Iniciar periodo</button>
         </div>
       ) : (
-        <div>
+        <div className={styles.submit}>
           <span>Periodo actual: {period}</span>
           <p></p>
           <button onClick={handleEndPeriod}>Terminar periodo</button>

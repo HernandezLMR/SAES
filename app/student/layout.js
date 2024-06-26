@@ -6,8 +6,9 @@ export default function userLayout({ children }) {
       
         
         <div>
-            {children}
             <Shome/>
+            {children}
+            
             
         </div>
         

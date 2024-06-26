@@ -1,0 +1,39 @@
+.submit {
+    display: flex;
+    flex-direction: column; /* Elements stack vertically */
+    align-items: flex-start; /* Align items to the start of the container */
+    max-width: 400px; /* Optional: Set maximum width for the form */
+    margin: 0 auto; /* Optional: Center the form horizontally */
+}
+
+.submit div {
+    margin-bottom: 50px; /* Optional: Add margin between input groups */
+}
+
+.submit label {
+    font-size: 1rem; /* Adjust label font size */
+}
+
+
+.submit input, 
+.submit select {
+    max-height: 500px; /* Set maximum height for text inputs and select */
+    width: 100%; /* Take up full width of the container */
+    padding: 8px; /* Add padding inside the input/select */
+    font-size: 1rem; /* Adjust text size */
+    border: 1px solid #ccc; /* Optional: Add a border */
+    border-radius: 4px; /* Optional: Rounded corners */
+}
+
+.submit button {
+    max-width: 200px; /* Set maximum width for the button */
+    padding: 10px 20px; /* Adjust padding for button size */
+    font-size: 1rem; /* Adjust button text size */
+    color: white; /* Button text color */
+    border: none; /* Remove button border */
+    cursor: pointer; /* Change cursor to pointer on hover */
+    border-radius: 4px; /* Optional: Rounded corners */
+
+}
+
+

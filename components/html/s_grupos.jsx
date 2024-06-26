@@ -2,11 +2,12 @@
 
 import React, { useState, useEffect } from 'react';
 import AddStudent from '../handleAddStudent';
+import styles from "../grupos_styles.module.css";
 
 function GroupSearchAndAdd() {
   
   const [searchMateria, setSearchMateria] = useState('');
-  const [groupData, setGroupData] = useState({id: "", materia: "", maestro: ""});
+  const [groupData, setGroupData] = useState("");
 
   const handleSearchChange = (e) => {
     setSearchMateria(e.target.value);
@@ -67,7 +68,7 @@ function GroupSearchAndAdd() {
 
   return (
     <div>
-      <form onSubmit={handleSearchSubmit}>
+      <form className={styles.submit} onSubmit={handleSearchSubmit}>
         <div>
           <label htmlFor="searchMateria">Materia:</label>
           <input
@@ -85,7 +86,7 @@ function GroupSearchAndAdd() {
       {groupData && (
         <div>
           <h2>Grupo Encontrado</h2>
-          <table>
+          <table className="table" border="1">
             <thead>
               <tr>
                 <th>ID</th>

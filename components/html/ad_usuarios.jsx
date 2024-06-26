@@ -1,4 +1,5 @@
 "use client"
+import styles from "../grupos_styles2.module.css"
 
 import React, { useState } from 'react';
 
@@ -55,7 +56,7 @@ const UserForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form className={styles.submit} onSubmit={handleSubmit}>
       <div>
         <label htmlFor="matricula">Matricula:</label>
         <input

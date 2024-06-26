@@ -1,0 +1,50 @@
+.navbar {
+    font-family: Arial, sans-serif;
+    background-color: #80004b;
+    width: 100%;
+}
+  
+.navbarContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row; /* Ensure horizontal alignment */
+}
+  
+.navbar img {
+    height: 15rem;
+    width: auto;
+}
+  
+.navbar h1,
+.navbar p,
+.navbar h2 {
+    color: white;
+    margin: 0;
+}
+  
+.navbar h1 {
+    font-size: 3.5rem;
+}
+  
+.navbar p {
+    font-size: 2.6rem;
+}
+  
+.navbar h2 {
+    font-size: 2.5rem;
+
+}
+
+.centered {
+    justify-content: center; /* Center content horizontally */
+    text-align: center; /* Center text content */
+}
+
+.navbar button {
+    border-radius: 10px;
+    padding: 10px 20px;
+    font-size: 1.5rem;
+    min-height: 3rem;
+    cursor: pointer;
+}
